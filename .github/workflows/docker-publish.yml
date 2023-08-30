@@ -24,10 +24,10 @@ jobs:
        
     - name: Docker builder
       run: |
-          docker buildx use $(docker buildx create --platform linux/amd64,linux/arm64,linux/arm/v8)
+          docker buildx use $(docker buildx create --platform linux/amd64,linux/arm64,linux/arm/v8,linux/arm/v7)
          
     - name: Build & Push
       run: |
-        docker buildx build --file Dockerfile --platform linux/amd64,linux/arm64,linux/arm/v8 --output "type=image,push=true" --tag leantime/leantime:${{ github.event.inputs.tag }} .
+        docker buildx build --file Dockerfile --platform linux/amd64,linux/arm64,linux/arm/v8,linux/arm/v7 --output "type=image,push=true" --tag leantime/leantime:${{ github.event.inputs.tag }} .
       
     
